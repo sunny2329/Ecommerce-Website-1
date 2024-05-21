@@ -99,8 +99,9 @@ async function fetchData() {
   }
 }
 
-export const proDetails = await fetchData();
-console.log(proDetails[0]);
+const proDetails = await fetchData();
+export {proDetails}
+// console.log(proDetails[0]);
 // =================== PaginationItems Start here ===============
 
 export const paginationItems = [
