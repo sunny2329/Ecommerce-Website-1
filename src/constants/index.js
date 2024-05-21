@@ -85,6 +85,8 @@ export const navBarList = [
 ];
 // =================== NavBarList End here ======================      
 
+let proDetails = [];
+
 async function fetchData() {
   try {
     const response = await fetch('https://fakestoreapi.com/products');
@@ -93,13 +95,13 @@ async function fetchData() {
     }
     const data = await response.json();
     // console.log(data);
-    return data;
+    proDetails = data;
+    // return data;
   } catch (error) {
     console.error('There was a problem with the fetch operation:', error);
   }
 }
-
-const proDetails = await fetchData();
+fetchData();
 export {proDetails}
 // console.log(proDetails[0]);
 // =================== PaginationItems Start here ===============
