@@ -2,10 +2,6 @@ import React, { useState } from "react";
 import ReactPaginate from "react-paginate";
 import Product from "../../Home/Products/Product";
 import { useSelector } from "react-redux";
-import { paginationItems, proDetails } from "../../../constants";
-
-// const items = paginationItems;
-const items = proDetails;
 
 function Items({ currentItems, selectedBrands, selectedCategories }) {
   // Filter items based on selected brands and categories
@@ -43,9 +39,23 @@ function Items({ currentItems, selectedBrands, selectedCategories }) {
 }
 
 const Pagination = ({ itemsPerPage }) => {
+  const [items,setItems] = useState([]);
   const [itemOffset, setItemOffset] = useState(0);
   const [itemStart, setItemStart] = useState(1);
-
+  async function fetchData(){
+    try {
+      const response = await fetch('https://fakestoreapi.com/products');
+      if (!response.ok) {
+        throw new Error('Network response was not ok ' + response.statusText);
+      }
+      const data = await response.json();
+      // console.log(data);
+      setItems(data);     
+    } catch (error) {
+      console.error('There was a problem with the fetch operation:', error);
+    }
+  }
+  fetchData();
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = items.slice(itemOffset, endOffset);
   const selectedBrands = useSelector(

@@ -5,7 +5,7 @@ import { FaSearch, FaUser, FaCaretDown, FaShoppingCart } from "react-icons/fa";
 import Flex from "../../DesignLayouts/Flex";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { paginationItems,proDetails } from "../../../constants";
+import { proDetails } from "../../../constants";
 import { BsSuitHeartFill } from "react-icons/bs";
 
 const HeaderBottom = () => {
